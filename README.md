@@ -1,11 +1,11 @@
 # zipper
 A zipping tool for golang
 
-##Functions available
+## Functions available
 * ZipIt
 * UnzipIt
 
-###ZipIt function
+### ZipIt function
 ```go
 // You pass in the filepath of the file of folder that you want to zip
 // as well as the destination folder, where you want it to be saved and
@@ -15,7 +15,7 @@ destination, err := ZipIt(filePath, Destination, zipfileName string)
 ```
 >Note that you can pass  an empty string to the destination and zipFileName if you want to zip the folder of file and have it in the same directory as the file path.
 
-###UnZipIt function
+### UnZipIt function
 ```go
 // You pass in the filepath of the file of folder that you want to unzip
 // as well as the destination folder, where you want it to be saved and
