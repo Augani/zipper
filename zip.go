@@ -1,4 +1,5 @@
-package main
+//package zipper provides functions to zip and unzip files and/or folders
+package zipper
 
 import (
 	"archive/zip"
@@ -20,7 +21,7 @@ creates a new folder in a given destination which is the second parameter.
 It returns a boolean and an error respectively.
 Boolean is returned when the unzipping is successful and error is returned when it is not
 */
-func unzipFile(filePath, fileDestination string) (final bool, finalError error) {
+func UnzipIt(filePath, fileDestination string) (final bool, finalError error) {
 	file, fileError := os.Open(filePath)
 	if fileError != nil {
 		return false, errors.New("filepath doesn't exist")
@@ -116,11 +117,7 @@ func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
 			log.Fatal(ero)
 		}
 		writeFile(y, b)
-		//_, er := y.Write(b)
-		//
-		//if er != nil {
-		//	log.Fatal(er)
-		//}
+
 
 	}
 }
@@ -138,7 +135,7 @@ It accepts a filepath, ie. The path of the folder or file then zips it and
 places it in a given destination, which is the second parameter.
 It returns the destination of the zipped file as a string
 */
-func zipIt(filePath, fileDestination string, zipFileName string) (Destination string, Error error) {
+func ZipIt(filePath, fileDestination string, zipFileName string) (Destination string, Error error) {
 	fileReader, errorReader := os.Open(filePath)
 	if errorReader != nil {
 		log.Fatal(errorReader)
@@ -217,15 +214,3 @@ func zipIt(filePath, fileDestination string, zipFileName string) (Destination st
 
 }
 
-func main() {
-	//created, err :=	unzipFile("C:\\Users\\augan\\Downloads\\Compressed\\Euphoria (US) Season 1. revittony.zip", "./")
-	y, err := zipIt("C:\\Users\\augan\\Downloads\\Compressed\\PluralSight - Concurrent Programming with Go -- [ FreeCourseWeb ]", "C:\\Users\\augan\\Videos", "")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(y)
-
-	//if created {
-	//	fmt.Print("File unzipped")
-	//}
-}
