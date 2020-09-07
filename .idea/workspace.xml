@@ -7,7 +7,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="162f2f9d-9b34-4b61-b175-e4e4e7c17fa1" name="Default Changelist" comment="" />
+    <list default="true" id="162f2f9d-9b34-4b61-b175-e4e4e7c17fa1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/list_from_GHS.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/north/berma/zw.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/north/berma/~$list_from_GHS.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/north/nt.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/north/~$sormas_facilities_2020_05_21_12_42.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/sormas_facilities_2020_05_21_12_42.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/western/list_from_GHS.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/western/sormas_facilities_2020_05_21_12_42.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/western/~$list_from_GHS.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saz/western/~$sormas_facilities_2020_05_21_12_42.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/western.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/western/eastern/b.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/western/eastern/c.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/western/list_from_GHS.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/western/sormas_facilities_2020_05_21_12_42.xlsx" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +33,13 @@
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Augustus Otu" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1gx7DxSRNIxUgUzbOOw4nHzxlvx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -24,6 +48,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -62,6 +87,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added changes to zipit" />
+    <option name="LAST_COMMIT_MESSAGE" value="added changes to zipit" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="475" y="314" key="#GOROOT" timestamp="1599044482253">
       <screen x="0" y="0" width="1366" height="768" />
@@ -71,6 +100,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="438" y="248" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1599215030649" />
+    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1599493810925">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1599493810925" />
     <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1599128245184">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -111,17 +144,29 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="184" y="28" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1599401181154" />
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1599493958570">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1599493958570" />
     <state width="691" height="392" key="XDebugger.FullValuePopup" timestamp="1599174430608">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="691" height="392" key="XDebugger.FullValuePopup/0.0.1366.768@0.0.1366.768" timestamp="1599174430608" />
+    <state x="500" y="294" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599493948448">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="500" y="294" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.768@0.0.1366.768" timestamp="1599493948448" />
+    <state x="484" y="292" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1599493887243">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="484" y="292" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1366.768@0.0.1366.768" timestamp="1599493887243" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/main.go</url>
-          <line>147</line>
+          <line>140</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
