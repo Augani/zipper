@@ -15,13 +15,13 @@ import (
 )
 
 /*
-unzipFile unzips a given zipped file to a given destination
+UnZipIt unzips a given zipped file to a given destination
 It accepts a filepath, ie. The path of the zipped file then unzips it and
 creates a new folder in a given destination which is the second parameter.
 It returns a boolean and an error respectively.
 Boolean is returned when the unzipping is successful and error is returned when it is not
 */
-func UnzipIt(filePath, fileDestination string) (final bool, finalError error) {
+func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
 	file, fileError := os.Open(filePath)
 	if fileError != nil {
 		return false, errors.New("filepath doesn't exist")
@@ -35,16 +35,13 @@ func UnzipIt(filePath, fileDestination string) (final bool, finalError error) {
 		}
 	}()
 	fileName := file.Name()
-	if strings.Contains(fileName, "zip") {
-		fileName = strings.TrimRight(fileName, ".zip")
-	} else if strings.Contains(fileName, "tar") {
-		//sucess, tarError :=	zipTar(filePath, fileDestination)
-		//if tarError != nil {
-		//		return false, tarError
-		//}
-		//return sucess, nil
+	if fileDestination == "" {
+
+		fileDirectory := filepath.Dir(fileName)
+		fileFolder := strings.TrimSuffix(strings.TrimLeft(fileName, fileDirectory), ".zip")
+		fileDestination = filepath.Join(fileDirectory, fileFolder)
 	}
-	fileDestination = filepath.Join(fileDestination, fileName)
+
 	closeError := os.MkdirAll(fileDestination, 0777)
 	if closeError != nil {
 		log.Fatal(closeError)
@@ -63,8 +60,9 @@ func UnzipIt(filePath, fileDestination string) (final bool, finalError error) {
 	}()
 
 	for _, readFile := range readZip.File {
+		fmt.Println(readFile.Name)
 		if os.FileMode.IsDir(readFile.FileInfo().Mode()) {
-			dirError := os.MkdirAll(filepath.Join(fileName, readFile.Name), readFile.FileInfo().Mode())
+			dirError := os.MkdirAll(filepath.Join(fileDestination, readFile.Name), readFile.FileInfo().Mode())
 			if dirError != nil {
 				log.Fatal(dirError)
 			}
@@ -78,15 +76,18 @@ func UnzipIt(filePath, fileDestination string) (final bool, finalError error) {
 		fileWriter, errorFile := os.OpenFile(path, os.O_CREATE, readFile.Mode())
 		if errorFile != nil {
 			log.Fatal(errorFile)
+		}
+		_, err = io.Copy(fileWriter, reader)
+		if err != nil {
+			log.Fatal(err)
+		}
+		if errorFile != nil {
+			log.Fatal(errorFile)
 		} else {
 			closeError := fileWriter.Close()
 			if closeError != nil {
 				log.Fatal(closeError)
 			}
-		}
-		_, err = io.Copy(fileWriter, reader)
-		if err != nil {
-			log.Fatal(err)
 		}
 	}
 
@@ -95,6 +96,7 @@ func UnzipIt(filePath, fileDestination string) (final bool, finalError error) {
 }
 
 func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
+
 	directory, directoryError := ioutil.ReadDir(filepath.Join(mainPath, folder))
 	if directoryError != nil {
 		log.Fatal(directoryError)
@@ -105,7 +107,9 @@ func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
 			if writeError != nil {
 				log.Fatal(writeError)
 			}
+
 			writeFolder(filepath.Join(folder, theFile.Name()+"/"), mainPath, theWriter)
+
 			continue
 		}
 		y, yer := theWriter.Create(filepath.Join(folder, theFile.Name()))
@@ -116,10 +120,11 @@ func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
 		if ero != nil {
 			log.Fatal(ero)
 		}
+
 		writeFile(y, b)
 
-
 	}
+
 }
 
 func writeFile(writer io.Writer, data []byte) {
@@ -127,10 +132,11 @@ func writeFile(writer io.Writer, data []byte) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 }
 
 /*
-zipIt zips a given folder or file to a given destination.
+ZipIt zips a given folder or file to a given destination.
 It accepts a filepath, ie. The path of the folder or file then zips it and
 places it in a given destination, which is the second parameter.
 It returns the destination of the zipped file as a string
@@ -143,26 +149,27 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 	}
 
 	fileDirectory := filepath.Dir(fileReader.Name())
-	fileNameDefault := strings.TrimLeft(fileReader.Name(), fileDirectory) + ".zip"
+	fileNameDefault := strings.TrimPrefix(fileReader.Name(), fileDirectory) + ".zip"
 	fmt.Println(fileNameDefault)
 	if fileDestination == "" && zipFileName == "" {
 		Destination = filepath.Join(fileDirectory, fileNameDefault)
 	} else if zipFileName != "" && fileDestination != "" {
-		Destination = filepath.Join(fileDestination, zipFileName)
+		Destination = filepath.Join(fileDestination, zipFileName) + ".zip"
 	} else if fileDestination != "" && zipFileName == "" {
 		Destination = filepath.Join(fileDestination, fileNameDefault)
 	} else {
-		Destination = filepath.Join(fileDirectory, zipFileName)
+		Destination = filepath.Join(fileDirectory, zipFileName) + ".zip"
 	}
 	fileWriter, errorFile := os.OpenFile(Destination, os.O_CREATE, 0666)
 	fileData, errorFileData := fileReader.Stat()
 	w := zip.NewWriter(fileWriter)
 	w.RegisterCompressor(zip.Deflate, func(out io.Writer) (io.WriteCloser, error) {
-		return flate.NewWriter(out, flate.BestCompression)
+		return flate.NewWriter(out, flate.BestSpeed)
 	})
 	if errorFileData != nil {
 		log.Fatal(errorFileData)
 	}
+
 	if fileData.IsDir() {
 		fileContents, errorFileContents := ioutil.ReadDir(filePath)
 		if errorFileContents != nil {
@@ -174,7 +181,9 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 				if createError != nil {
 					log.Fatal(createError)
 				}
+
 				writeFolder(f.Name()+"/", filePath, w)
+
 				continue
 			}
 			y, yer := w.Create(f.Name())
@@ -185,6 +194,7 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 			if ero != nil {
 				log.Fatal(ero)
 			}
+
 			writeFile(y, b)
 
 		}
@@ -197,12 +207,14 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 		if ero != nil {
 			log.Fatal(ero)
 		}
+
 		writeFile(y, b)
 	}
 
 	if errorFile != nil {
 		log.Fatal(errorFile)
 	}
+
 	defer func() {
 		ert := w.Close()
 		if ert != nil {
@@ -213,4 +225,3 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 	return
 
 }
-
