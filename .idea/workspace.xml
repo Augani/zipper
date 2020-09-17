@@ -8,9 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="162f2f9d-9b34-4b61-b175-e4e4e7c17fa1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zip.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zip.go" beforeDir="false" afterPath="$PROJECT_DIR$/zip.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -79,7 +79,21 @@
       <option name="project" value="LOCAL" />
       <updated>1599498944316</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added changes to zipit function">
+      <created>1599566227006</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1599566227006</updated>
+    </task>
+    <task id="LOCAL-00003" summary="changed file name">
+      <created>1599566292852</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1599566292852</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,8 +103,12 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="added changes to zipit" />
-    <option name="LAST_COMMIT_MESSAGE" value="added changes to zipit" />
+    <MESSAGE value="added changes to zipit function" />
+    <MESSAGE value="changed file name" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed file name" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="475" y="314" key="#GOROOT" timestamp="1599044482253">
@@ -105,34 +123,34 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="438" y="6" key="#xdebugger.evaluate/0.0.1366.768@0.0.1366.768" timestamp="1599561785320" />
-    <state x="438" y="248" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1599556455975">
+    <state x="438" y="248" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1600340871613">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="438" y="248" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1599556455975" />
-    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1599498943241">
+    <state x="438" y="248" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1600340871613" />
+    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1599566291243">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1599498943241" />
+    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1599566291243" />
     <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1599128245184">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="463" y="138" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1599128245184" />
-    <state width="948" height="181" key="GridCell.Tab.0.bottom" timestamp="1599565576052">
+    <state width="1323" height="185" key="GridCell.Tab.0.bottom" timestamp="1600352339698">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="948" height="181" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1599565576052" />
-    <state width="948" height="181" key="GridCell.Tab.0.center" timestamp="1599565576051">
+    <state width="1323" height="185" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1600352339698" />
+    <state width="1323" height="185" key="GridCell.Tab.0.center" timestamp="1600352339697">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="948" height="181" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1599565576051" />
-    <state width="948" height="181" key="GridCell.Tab.0.left" timestamp="1599565576051">
+    <state width="1323" height="185" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1600352339697" />
+    <state width="1323" height="185" key="GridCell.Tab.0.left" timestamp="1600352339697">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="948" height="181" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1599565576051" />
-    <state width="948" height="181" key="GridCell.Tab.0.right" timestamp="1599565576052">
+    <state width="1323" height="185" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1600352339697" />
+    <state width="1323" height="185" key="GridCell.Tab.0.right" timestamp="1600352339697">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="948" height="181" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1599565576052" />
+    <state width="1323" height="185" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1600352339697" />
     <state width="948" height="225" key="GridCell.Tab.1.bottom" timestamp="1599565259850">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -153,10 +171,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="184" y="28" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1599401181154" />
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1599499054132">
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1599566300998">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1599499054132" />
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1599566300998" />
     <state width="691" height="392" key="XDebugger.FullValuePopup" timestamp="1599560063261">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -169,36 +187,5 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="484" y="292" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1366.768@0.0.1366.768" timestamp="1599493887243" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/main.go</url>
-          <line>77</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/main.go</url>
-          <line>136</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/main.go</url>
-          <line>226</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/main.go</url>
-          <line>126</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/main.go</url>
-          <line>117</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

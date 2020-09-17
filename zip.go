@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 )
 
 /*
@@ -22,6 +23,7 @@ It returns a boolean and an error respectively.
 Boolean is returned when the unzipping is successful and error is returned when it is not
 */
 func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
+
 	file, fileError := os.Open(filePath)
 	if fileError != nil {
 		return false, errors.New("filepath doesn't exist")
@@ -36,7 +38,6 @@ func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
 	}()
 	fileName := file.Name()
 	if fileDestination == "" {
-
 		fileDirectory := filepath.Dir(fileName)
 		fileFolder := strings.TrimSuffix(strings.TrimLeft(fileName, fileDirectory), ".zip")
 		fileDestination = filepath.Join(fileDirectory, fileFolder)
@@ -60,7 +61,19 @@ func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
 	}()
 
 	for _, readFile := range readZip.File {
-		fmt.Println(readFile.Name)
+
+		folders := strings.Split(readFile.Name, "/")
+		b := fileDestination
+		if len(folders) > 1 {
+			for r := 0; r < len(folders)-1; r++ {
+				dError := os.MkdirAll(filepath.Join(b, folders[r]), 0777)
+				if dError != nil {
+					log.Fatal(dError)
+				}
+				b = filepath.Join(b, folders[r])
+			}
+		}
+
 		if os.FileMode.IsDir(readFile.FileInfo().Mode()) {
 			dirError := os.MkdirAll(filepath.Join(fileDestination, readFile.Name), readFile.FileInfo().Mode())
 			if dirError != nil {
@@ -68,16 +81,20 @@ func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
 			}
 			continue
 		}
+
 		reader, err := readFile.Open()
 		if err != nil {
 			log.Fatal(err)
 		}
 		path := filepath.Join(fileDestination, strings.TrimLeft(readFile.Name, "/"))
+
 		fileWriter, errorFile := os.OpenFile(path, os.O_CREATE, readFile.Mode())
 		if errorFile != nil {
 			log.Fatal(errorFile)
 		}
+		fmt.Println(readFile.Name + ", done")
 		_, err = io.Copy(fileWriter, reader)
+
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -89,6 +106,7 @@ func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
 				log.Fatal(closeError)
 			}
 		}
+
 	}
 
 	return true, nil
@@ -112,6 +130,10 @@ func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
 
 			continue
 		}
+		if strings.HasPrefix(theFile.Name(), "~") {
+			continue
+		}
+
 		y, yer := theWriter.Create(filepath.Join(folder, theFile.Name()))
 		if yer != nil {
 			log.Fatal(yer)
@@ -123,6 +145,26 @@ func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
 
 		writeFile(y, b)
 
+	}
+
+}
+
+func worker(path string, readFile *zip.File, group *sync.WaitGroup, reader io.ReadCloser) {
+	defer group.Done()
+	fileWriter, errorFile := os.OpenFile(path, os.O_CREATE, readFile.Mode())
+	if errorFile != nil {
+		log.Fatal(errorFile)
+	}
+	fmt.Println(readFile.Name + ", done")
+	_, err := io.Copy(fileWriter, reader)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	closeError := fileWriter.Close()
+	if closeError != nil {
+		log.Fatal(closeError)
 	}
 
 }
@@ -164,7 +206,7 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 	fileData, errorFileData := fileReader.Stat()
 	w := zip.NewWriter(fileWriter)
 	w.RegisterCompressor(zip.Deflate, func(out io.Writer) (io.WriteCloser, error) {
-		return flate.NewWriter(out, flate.BestSpeed)
+		return flate.NewWriter(out, flate.BestCompression)
 	})
 	if errorFileData != nil {
 		log.Fatal(errorFileData)
@@ -176,6 +218,7 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 			log.Fatal(errorFileContents)
 		}
 		for _, f := range fileContents {
+
 			if f.IsDir() {
 				_, createError := w.Create(f.Name() + "/")
 				if createError != nil {
@@ -186,6 +229,7 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 
 				continue
 			}
+
 			y, yer := w.Create(f.Name())
 			if yer != nil {
 				log.Fatal(yer)
@@ -199,9 +243,11 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 
 		}
 	} else {
+		fmt.Println(fileData.Name())
 		y, yer := w.Create(fileData.Name())
 		if yer != nil {
 			log.Fatal(yer)
+
 		}
 		b, ero := ioutil.ReadFile(filepath.Join(filePath, fileData.Name()))
 		if ero != nil {
