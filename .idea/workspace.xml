@@ -8,8 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="162f2f9d-9b34-4b61-b175-e4e4e7c17fa1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zip.go" beforeDir="false" afterPath="$PROJECT_DIR$/zip.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599566292852</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="completed package for zipped files">
+      <created>1600353201348</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1600353201348</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,7 +110,8 @@
     <MESSAGE value="added changes to zipit" />
     <MESSAGE value="added changes to zipit function" />
     <MESSAGE value="changed file name" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed file name" />
+    <MESSAGE value="completed package for zipped files" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed package for zipped files" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -127,10 +133,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="438" y="248" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1600340871613" />
-    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1599566291243">
+    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1600353199811">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1599566291243" />
+    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1600353199811" />
     <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1599128245184">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -171,10 +177,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="184" y="28" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1599401181154" />
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1599566300998">
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1600353312645">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1599566300998" />
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1600353312645" />
     <state width="691" height="392" key="XDebugger.FullValuePopup" timestamp="1599560063261">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

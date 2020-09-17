@@ -12,7 +12,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"sync"
 )
 
 /*
@@ -59,7 +58,6 @@ func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
 			}
 		}
 	}()
-
 	for _, readFile := range readZip.File {
 
 		folders := strings.Split(readFile.Name, "/")
@@ -92,9 +90,7 @@ func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
 		if errorFile != nil {
 			log.Fatal(errorFile)
 		}
-		fmt.Println(readFile.Name + ", done")
 		_, err = io.Copy(fileWriter, reader)
-
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -106,15 +102,11 @@ func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
 				log.Fatal(closeError)
 			}
 		}
-
 	}
-
 	return true, nil
 
 }
-
 func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
-
 	directory, directoryError := ioutil.ReadDir(filepath.Join(mainPath, folder))
 	if directoryError != nil {
 		log.Fatal(directoryError)
@@ -125,15 +117,12 @@ func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
 			if writeError != nil {
 				log.Fatal(writeError)
 			}
-
 			writeFolder(filepath.Join(folder, theFile.Name()+"/"), mainPath, theWriter)
-
 			continue
 		}
 		if strings.HasPrefix(theFile.Name(), "~") {
 			continue
 		}
-
 		y, yer := theWriter.Create(filepath.Join(folder, theFile.Name()))
 		if yer != nil {
 			log.Fatal(yer)
@@ -142,39 +131,14 @@ func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
 		if ero != nil {
 			log.Fatal(ero)
 		}
-
 		writeFile(y, b)
-
 	}
-
 }
-
-func worker(path string, readFile *zip.File, group *sync.WaitGroup, reader io.ReadCloser) {
-	defer group.Done()
-	fileWriter, errorFile := os.OpenFile(path, os.O_CREATE, readFile.Mode())
-	if errorFile != nil {
-		log.Fatal(errorFile)
-	}
-	fmt.Println(readFile.Name + ", done")
-	_, err := io.Copy(fileWriter, reader)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	closeError := fileWriter.Close()
-	if closeError != nil {
-		log.Fatal(closeError)
-	}
-
-}
-
 func writeFile(writer io.Writer, data []byte) {
 	_, err := writer.Write(data)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 }
 
 /*
@@ -189,7 +153,6 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 		log.Fatal(errorReader)
 		return "", errorReader
 	}
-
 	fileDirectory := filepath.Dir(fileReader.Name())
 	fileNameDefault := strings.TrimPrefix(fileReader.Name(), fileDirectory) + ".zip"
 	fmt.Println(fileNameDefault)
@@ -211,25 +174,20 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 	if errorFileData != nil {
 		log.Fatal(errorFileData)
 	}
-
 	if fileData.IsDir() {
 		fileContents, errorFileContents := ioutil.ReadDir(filePath)
 		if errorFileContents != nil {
 			log.Fatal(errorFileContents)
 		}
 		for _, f := range fileContents {
-
 			if f.IsDir() {
 				_, createError := w.Create(f.Name() + "/")
 				if createError != nil {
 					log.Fatal(createError)
 				}
-
 				writeFolder(f.Name()+"/", filePath, w)
-
 				continue
 			}
-
 			y, yer := w.Create(f.Name())
 			if yer != nil {
 				log.Fatal(yer)
@@ -238,36 +196,28 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 			if ero != nil {
 				log.Fatal(ero)
 			}
-
 			writeFile(y, b)
-
 		}
 	} else {
 		fmt.Println(fileData.Name())
 		y, yer := w.Create(fileData.Name())
 		if yer != nil {
 			log.Fatal(yer)
-
 		}
 		b, ero := ioutil.ReadFile(filepath.Join(filePath, fileData.Name()))
 		if ero != nil {
 			log.Fatal(ero)
 		}
-
 		writeFile(y, b)
 	}
-
 	if errorFile != nil {
 		log.Fatal(errorFile)
 	}
-
 	defer func() {
 		ert := w.Close()
 		if ert != nil {
 			log.Fatal(ert)
 		}
 	}()
-
 	return
-
 }
