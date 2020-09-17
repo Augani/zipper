@@ -5,7 +5,6 @@ import (
 	"archive/zip"
 	"compress/flate"
 	"errors"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -155,7 +154,7 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 	}
 	fileDirectory := filepath.Dir(fileReader.Name())
 	fileNameDefault := strings.TrimPrefix(fileReader.Name(), fileDirectory) + ".zip"
-	fmt.Println(fileNameDefault)
+
 	if fileDestination == "" && zipFileName == "" {
 		Destination = filepath.Join(fileDirectory, fileNameDefault)
 	} else if zipFileName != "" && fileDestination != "" {
@@ -199,7 +198,7 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 			writeFile(y, b)
 		}
 	} else {
-		fmt.Println(fileData.Name())
+
 		y, yer := w.Create(fileData.Name())
 		if yer != nil {
 			log.Fatal(yer)

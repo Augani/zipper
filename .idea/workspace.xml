@@ -8,12 +8,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="162f2f9d-9b34-4b61-b175-e4e4e7c17fa1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/zip.go" beforeDir="false" afterPath="$PROJECT_DIR$/zip.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zip_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
@@ -36,6 +45,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -45,7 +55,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Test.TestZip in github.com/augani/zipper">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="zipper" />
       <working_directory value="$PROJECT_DIR$" />
@@ -55,8 +65,20 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestZip in github.com/augani/zipper" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="zipper" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/augani/zipper" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestZip\E$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestZip in github.com/augani/zipper" />
         <item itemvalue="Go Build.go build main.go" />
       </list>
     </recent_temporary>
@@ -98,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600353201348</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Removed unwanted code">
+      <created>1600353485281</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1600353485281</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,7 +140,8 @@
     <MESSAGE value="added changes to zipit function" />
     <MESSAGE value="changed file name" />
     <MESSAGE value="completed package for zipped files" />
-    <option name="LAST_COMMIT_MESSAGE" value="completed package for zipped files" />
+    <MESSAGE value="Removed unwanted code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unwanted code" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -133,30 +163,30 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="438" y="248" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1600340871613" />
-    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1600353199811">
+    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1600353484137">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1600353199811" />
+    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1600353484137" />
     <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1599128245184">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="463" y="138" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1599128245184" />
-    <state width="1323" height="185" key="GridCell.Tab.0.bottom" timestamp="1600352339698">
+    <state width="1323" height="185" key="GridCell.Tab.0.bottom" timestamp="1600354949405">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="185" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1600352339698" />
-    <state width="1323" height="185" key="GridCell.Tab.0.center" timestamp="1600352339697">
+    <state width="1323" height="185" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1600354949405" />
+    <state width="1323" height="185" key="GridCell.Tab.0.center" timestamp="1600354949405">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="185" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1600352339697" />
-    <state width="1323" height="185" key="GridCell.Tab.0.left" timestamp="1600352339697">
+    <state width="1323" height="185" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1600354949405" />
+    <state width="1323" height="185" key="GridCell.Tab.0.left" timestamp="1600354949405">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="185" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1600352339697" />
-    <state width="1323" height="185" key="GridCell.Tab.0.right" timestamp="1600352339697">
+    <state width="1323" height="185" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1600354949405" />
+    <state width="1323" height="185" key="GridCell.Tab.0.right" timestamp="1600354949405">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="185" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1600352339697" />
+    <state width="1323" height="185" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1600354949405" />
     <state width="948" height="225" key="GridCell.Tab.1.bottom" timestamp="1599565259850">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -177,10 +207,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="184" y="28" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1599401181154" />
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1600353312645">
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1600353488874">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1600353312645" />
+    <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1600353488874" />
     <state width="691" height="392" key="XDebugger.FullValuePopup" timestamp="1599560063261">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
