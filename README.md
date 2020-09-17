@@ -1,5 +1,5 @@
 # Zipper
-A zipping tool for golang for compressing zipped files even with deeply nested folders as well as uncompressing them with one line of code
+A zipping tool for golang for compressing zipped files even with deeply nested folders as well as decompressing them with one line of code
 
 # Installation
 ```shell script
