@@ -7,9 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="162f2f9d-9b34-4b61-b175-e4e4e7c17fa1" name="Default Changelist" comment="">
+    <list default="true" id="162f2f9d-9b34-4b61-b175-e4e4e7c17fa1" name="Default Changelist" comment="Refactored code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zip.go" beforeDir="false" afterPath="$PROJECT_DIR$/zip.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zip_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/zip_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +48,6 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
-    <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -58,7 +57,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Go Test.TestZip in github.com/augani/zipper">
+  <component name="RunManager" selected="Go Test.TestUnZip in github.com/augani/zipper">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="zipper" />
       <working_directory value="$PROJECT_DIR$" />
@@ -66,6 +65,28 @@
       <filePath value="$PROJECT_DIR$/main.go" />
       <package value="github.com/augani/zipper" />
       <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestUnZip in github.com/augani/zipper" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="zipper" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/augani/zipper" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestUnZip\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestZip in github.com/augani/zipper (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="zipper" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/augani/zipper" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestZip\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestZip in github.com/augani/zipper" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -81,6 +102,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestUnZip in github.com/augani/zipper" />
+        <item itemvalue="Go Test.TestZip in github.com/augani/zipper (1)" />
         <item itemvalue="Go Test.TestZip in github.com/augani/zipper" />
         <item itemvalue="Go Build.go build main.go" />
       </list>
@@ -137,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600355865409</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Refactored code">
+      <created>1600939487029</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1600939487029</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +175,17 @@
   </component>
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
@@ -155,7 +196,8 @@
     <MESSAGE value="completed package for zipped files" />
     <MESSAGE value="Removed unwanted code" />
     <MESSAGE value="Added a test case" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a test case" />
+    <MESSAGE value="Refactored code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored code" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
