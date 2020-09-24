@@ -4,10 +4,9 @@ package zipper
 import (
 	"archive/zip"
 	"compress/flate"
-	"errors"
+	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -21,18 +20,11 @@ It returns a boolean and an error respectively.
 Boolean is returned when the unzipping is successful and error is returned when it is not
 */
 func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
-
 	file, fileError := os.Open(filePath)
-	if fileError != nil {
-		return false, errors.New("filepath doesn't exist")
-	}
+	checkError(fileError)
 	defer func() {
-		if fileError == nil {
-			closeError := file.Close()
-			if closeError != nil {
-				log.Fatal(closeError)
-			}
-		}
+		closeError := file.Close()
+		checkError(closeError)
 	}()
 	fileName := file.Name()
 	if fileDestination == "" {
@@ -40,82 +32,51 @@ func UnZipIt(filePath, fileDestination string) (final bool, finalError error) {
 		fileFolder := strings.TrimSuffix(strings.TrimLeft(fileName, fileDirectory), ".zip")
 		fileDestination = filepath.Join(fileDirectory, fileFolder)
 	}
-
 	closeError := os.MkdirAll(fileDestination, 0777)
-	if closeError != nil {
-		log.Fatal(closeError)
-	}
+	checkError(closeError)
 	readZip, readError := zip.OpenReader(filePath)
-	if readError != nil {
-		return false, errors.New("File cannot be read. Please check to make sure it is a zipped file.")
-	}
+	checkError(readError)
 	defer func() {
-		if readError == nil {
-			closeError := readZip.Close()
-			if closeError != nil {
-				log.Fatal(closeError)
-			}
-		}
+		closeError := readZip.Close()
+		checkError(closeError)
 	}()
 	for _, readFile := range readZip.File {
-
 		folders := strings.Split(readFile.Name, "/")
 		b := fileDestination
 		if len(folders) > 1 {
 			for r := 0; r < len(folders)-1; r++ {
 				dError := os.MkdirAll(filepath.Join(b, folders[r]), 0777)
-				if dError != nil {
-					log.Fatal(dError)
-				}
+				checkError(dError)
 				b = filepath.Join(b, folders[r])
 			}
 		}
-
 		if os.FileMode.IsDir(readFile.FileInfo().Mode()) {
 			dirError := os.MkdirAll(filepath.Join(fileDestination, readFile.Name), readFile.FileInfo().Mode())
-			if dirError != nil {
-				log.Fatal(dirError)
-			}
+			checkError(dirError)
 			continue
 		}
-
 		reader, err := readFile.Open()
-		if err != nil {
-			log.Fatal(err)
-		}
+		checkError(err)
 		path := filepath.Join(fileDestination, strings.TrimLeft(readFile.Name, "/"))
-
 		fileWriter, errorFile := os.OpenFile(path, os.O_CREATE, readFile.Mode())
-		if errorFile != nil {
-			log.Fatal(errorFile)
-		}
+		checkError(errorFile)
 		_, err = io.Copy(fileWriter, reader)
-		if err != nil {
-			log.Fatal(err)
-		}
-		if errorFile != nil {
-			log.Fatal(errorFile)
-		} else {
-			closeError := fileWriter.Close()
-			if closeError != nil {
-				log.Fatal(closeError)
-			}
-		}
+		checkError(err)
+		closeError := fileWriter.Close()
+		checkError(closeError)
+
 	}
 	return true, nil
 
 }
+
 func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
 	directory, directoryError := ioutil.ReadDir(filepath.Join(mainPath, folder))
-	if directoryError != nil {
-		log.Fatal(directoryError)
-	}
+	checkError(directoryError)
 	for _, theFile := range directory {
 		if theFile.IsDir() {
 			_, writeError := theWriter.Create(folder + theFile.Name() + "/")
-			if writeError != nil {
-				log.Fatal(writeError)
-			}
+			checkError(writeError)
 			writeFolder(filepath.Join(folder, theFile.Name()+"/"), mainPath, theWriter)
 			continue
 		}
@@ -123,21 +84,15 @@ func writeFolder(folder, mainPath string, theWriter *zip.Writer) {
 			continue
 		}
 		y, yer := theWriter.Create(filepath.Join(folder, theFile.Name()))
-		if yer != nil {
-			log.Fatal(yer)
-		}
+		checkError(yer)
 		b, ero := ioutil.ReadFile(filepath.Join(mainPath, filepath.Join(folder, theFile.Name())))
-		if ero != nil {
-			log.Fatal(ero)
-		}
+		checkError(ero)
 		writeFile(y, b)
 	}
 }
 func writeFile(writer io.Writer, data []byte) {
 	_, err := writer.Write(data)
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkError(err)
 }
 
 /*
@@ -148,10 +103,7 @@ It returns the destination of the zipped file as a string
 */
 func ZipIt(filePath, fileDestination string, zipFileName string) (Destination string, Error error) {
 	fileReader, errorReader := os.Open(filePath)
-	if errorReader != nil {
-		log.Fatal(errorReader)
-		return "", errorReader
-	}
+	checkError(errorReader)
 	fileDirectory := filepath.Dir(fileReader.Name())
 	fileNameDefault := strings.TrimPrefix(fileReader.Name(), fileDirectory) + ".zip"
 
@@ -170,53 +122,42 @@ func ZipIt(filePath, fileDestination string, zipFileName string) (Destination st
 	w.RegisterCompressor(zip.Deflate, func(out io.Writer) (io.WriteCloser, error) {
 		return flate.NewWriter(out, flate.BestCompression)
 	})
-	if errorFileData != nil {
-		log.Fatal(errorFileData)
-	}
+	checkError(errorFileData)
 	if fileData.IsDir() {
 		fileContents, errorFileContents := ioutil.ReadDir(filePath)
-		if errorFileContents != nil {
-			log.Fatal(errorFileContents)
-		}
+		checkError(errorFileContents)
 		for _, f := range fileContents {
 			if f.IsDir() {
 				_, createError := w.Create(f.Name() + "/")
-				if createError != nil {
-					log.Fatal(createError)
-				}
+				checkError(createError)
 				writeFolder(f.Name()+"/", filePath, w)
 				continue
 			}
 			y, yer := w.Create(f.Name())
-			if yer != nil {
-				log.Fatal(yer)
-			}
+			checkError(yer)
 			b, ero := ioutil.ReadFile(filepath.Join(filePath, f.Name()))
-			if ero != nil {
-				log.Fatal(ero)
-			}
+			checkError(ero)
 			writeFile(y, b)
 		}
 	} else {
 
 		y, yer := w.Create(fileData.Name())
-		if yer != nil {
-			log.Fatal(yer)
-		}
+		checkError(yer)
 		b, ero := ioutil.ReadFile(filepath.Join(filePath, fileData.Name()))
-		if ero != nil {
-			log.Fatal(ero)
-		}
+		checkError(ero)
 		writeFile(y, b)
 	}
-	if errorFile != nil {
-		log.Fatal(errorFile)
-	}
+	checkError(errorFile)
 	defer func() {
 		ert := w.Close()
-		if ert != nil {
-			log.Fatal(ert)
-		}
+		checkError(ert)
 	}()
 	return
+}
+
+func checkError(err error) {
+	if err != nil {
+		fmt.Println("An error occurred:", error.Error(err))
+		os.Exit(0)
+	}
 }
